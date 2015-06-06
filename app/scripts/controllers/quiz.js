@@ -16,12 +16,13 @@ angular.module('newsquizApp')
     var questions = [];
     $scope.quizName = $routeParams.name;
     $scope.currentQuestionIndex = undefined;
+    $scope.showResponse = false;
+    $scope.response = "";
 
     Questions.get($routeParams.name).then(function(resp) {
     	resetCounter();
     	questions = resp.data;
     	$scope.currentQuestionIndex = 0;
-    	$scope.foo = questions;
     })
 
     $scope.$watch('currentQuestionIndex', function(newVal) {
@@ -44,6 +45,8 @@ angular.module('newsquizApp')
         if ($scope.currentTime < 0) {
         	resetCounter();
     		questions[$scope.currentQuestionIndex].status = 'unanswered';
+    		$scope.response = "Too slow!";
+    		blinkResponse();
     		$scope.currentQuestionIndex++;
         	$scope.lifesLeft--;
         }
@@ -62,16 +65,28 @@ angular.module('newsquizApp')
     		finish();
     	}
     })
+
+    var blinkResponse = function() {
+    	$scope.showResponse = true;
+    	$timeout(function() {
+    		$scope.showResponse = false;
+    	}, 500)
+    }
     
 
     $scope.answer = function(answer) {
     	// Correct answer
     	if (answer == $scope.currentQuestion.correctAnswer) {
     		questions[$scope.currentQuestionIndex].status = 'correct';
+    		$scope.response = "Correctamumdo!";
+    		blinkResponse();
     	}
     	// Wrong answer
     	else {
     		questions[$scope.currentQuestionIndex].status = 'false';
+    		$scope.lifesLeft--;
+    		$scope.response = "Not even close!";
+    		blinkResponse();
     	}
     	$scope.currentQuestionIndex = $scope.currentQuestionIndex + 1;
     	resetCounter();

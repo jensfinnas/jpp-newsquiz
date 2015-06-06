@@ -6,7 +6,20 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .card {
   max-width: 400px;
 
-  img {
-    width: 100%;
+  #question {
+  	position: relative;
+	.image {
+	  width: 100%;
+	}
+	#response {
+		position: absolute;
+		top: 50%;
+		text-align: center;
+		font-size: 300%;
+		width: 100%;
+		background-color: #fff; 
+	}
+
   }
+
 }

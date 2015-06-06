@@ -13,6 +13,10 @@ angular.module('newsquizApp')
       {
       	'name': 'geography',
       	'label': 'NKB:s awesome geo quiz'
+      },
+      {
+      	'name': 'insects',
+      	'label': 'Do these creatues have 4 legs?'
       }
     ];
   });

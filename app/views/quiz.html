@@ -5,8 +5,13 @@
   </div>
   <div>{{ currentTime }}</div>
 
+  
+
   <div id="question">
-    <img src="quizes/{{ quizName }}/{{ currentQuestion.image }}">
+    <img src="quizes/{{ quizName }}/{{ currentQuestion.image }}" class="image">
+    <div id="response" ng-show="showResponse">
+      {{ response }}
+    </div>
   </div>
 
   <div id="footer">
