@@ -32,10 +32,16 @@ angular.module('newsquizApp')
     ]
 
     $scope.lifesLeft = settings.numberOfLifes;
+    $scope.points = 0;
 
     $scope.currentQuestionIndex = 0;
     $scope.$watch('currentQuestionIndex', function(newVal) {
     	$scope.currentQuestion = questions[$scope.currentQuestionIndex];
+    	
+    	// If last question
+    	if ($scope.currentQuestionIndex == questions.length) {
+    		$scope.showResults = true;
+    	}
     })
     
     
@@ -43,7 +49,7 @@ angular.module('newsquizApp')
     $scope.answer = function(answer) {
     	// Correct answer
     	if (answer == $scope.currentQuestion.correctAnswer) {
-
+    		$scope.points = $scope.points + 1;
     	}
     	// Wrong answer
     	else {

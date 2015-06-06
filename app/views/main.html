@@ -2,8 +2,11 @@
   {{ lifesLeft }}
 </div>
 
-<div>
+<div ng-hide="showResults">
   {{ currentQuestion.question }}
+</div>
+<div ng-show="showResults">
+  You got {{ points }} points!
 </div>
 
 <div id="footer">
