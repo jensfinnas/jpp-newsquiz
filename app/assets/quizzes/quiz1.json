@@ -1,0 +1,67 @@
+{
+  "name": "Geo quizz",
+  "description": "Is this map correct? Or is it doctored? Test your knowledge of world geography!",
+  "header_question": "Is this an actual map?",
+  "questions": [
+    {
+      "filename": "images/geography/geo01-false.png",
+      "height": 680,
+      "width": 680,
+      "is_true": false
+    },
+    {
+      "filename": "images/geography/geo02-true.png",
+      "height": 680,
+      "width": 680,
+      "is_true": true
+    },
+    {
+      "filename": "images/geography/geo03-true.png",
+      "height": 680,
+      "width": 680,
+      "is_true": true
+    },
+    {
+      "filename": "images/geography/geo04-false.png",
+      "height": 680,
+      "width": 680,
+      "is_true": false
+    },
+    {
+      "filename": "images/geography/geo05-true.png",
+      "height": 680,
+      "width": 680,
+      "is_true": true
+    },
+    {
+      "filename": "images/geography/geo06-false.png",
+      "height": 680,
+      "width": 680,
+      "is_true": false
+    },
+    {
+      "filename": "images/geography/geo07-true.png",
+      "height": 680,
+      "width": 680,
+      "is_true": true
+    },
+    {
+      "filename": "images/geography/geo08-false.png",
+      "height": 680,
+      "width": 680,
+      "is_true": false
+    },
+    {
+      "filename": "images/geography/geo09-true.png",
+      "height": 680,
+      "width": 680,
+      "is_true": true
+    },
+    {
+      "filename": "images/geography/geo10-false.png",
+      "height": 680,
+      "width": 680,
+      "is_true": false
+    }
+  ]
+}
