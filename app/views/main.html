@@ -1,16 +1,20 @@
 <div id="lives">
-  {{ lifesLeft }}
+  {{ lifesLeft }} lifes left!
 </div>
+<div>{{ currentTime }}</div>
 
-<div>
+<div ng-hide="showResults">
   {{ currentQuestion.question }}
+  <div id="footer">
+    <div ng-click="answer('no')">
+      No
+    </div>
+    <div ng-click="answer('yes')">
+      Yes
+    </div>
+  </div>
+</div>
+<div ng-show="showResults">
+  You got {{ getPoints() }} points!
 </div>
 
-<div id="footer">
-  <div ng-click="answer('no')">
-    No
-  </div>
-  <div ng-click="answer('yes')">
-    Yes
-  </div>
-</div>
