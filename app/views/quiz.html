@@ -1,22 +1,25 @@
-Current questions: {{ currentQuestionIndex }}
-<div id="lives">
-  {{ lifesLeft }} lifes left!
-</div>
-<div>{{ currentTime }}</div>
+<div class="card" ng-hide="showResults">
+  Current questions: {{ currentQuestionIndex }}
+  <div id="lives">
+    {{ lifesLeft }} lifes left!
+  </div>
+  <div>{{ currentTime }}</div>
 
-<div ng-hide="showResults">
-{{questions}}
-  <img src="quizes/{{ quizName }}/{{ currentQuestion.image }}">
+  <div id="question">
+    <img src="quizes/{{ quizName }}/{{ currentQuestion.image }}">
+  </div>
+
   <div id="footer">
-    <div ng-click="answer('no')">
-      No
+    <div ng-click="answer(false)">
+      <button class="btn btn-lg btn-danger pull-left">No</button>
     </div>
-    <div ng-click="answer('yes')">
-      Yes
+    <div ng-click="answer(true)">
+      <button class="btn btn-lg btn-success pull-right">Yes</button>
     </div>
   </div>
 </div>
-<div ng-show="showResults">
+</div>
+<div class="card" ng-show="showResults">
   You got {{ getPoints() }} points!
 </div>
 

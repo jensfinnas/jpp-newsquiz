@@ -15,11 +15,13 @@ angular.module('newsquizApp')
     }
     var questions = [];
     $scope.quizName = $routeParams.name;
-    $scope.currentQuestionIndex = 0;
+    $scope.currentQuestionIndex = undefined;
 
     Questions.get($routeParams.name).then(function(resp) {
     	resetCounter();
     	questions = resp.data;
+    	$scope.currentQuestionIndex = 0;
+    	$scope.foo = questions;
     })
 
     $scope.$watch('currentQuestionIndex', function(newVal) {
