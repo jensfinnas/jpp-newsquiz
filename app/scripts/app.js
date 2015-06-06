@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('newsquizApp', [
     'ngAnimate',
     'ngCookies',
@@ -23,9 +23,9 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/:name', {
+        templateUrl: 'views/quiz.html',
+        controller: 'QuizCtrl'
       })
       .otherwise({
         redirectTo: '/'

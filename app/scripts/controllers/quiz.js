@@ -8,27 +8,31 @@
  * Controller of the newsquizApp
  */
 angular.module('newsquizApp')
-  .controller('MainCtrl', function ($scope, $timeout, $filter) {
+  .controller('QuizCtrl', function ($scope, $routeParams,$timeout, $filter, Questions) {
     var settings = {
     	secondsPerQuestion: 3,
     	numberOfLifes: 3 
     }
-    var questions = [
-        {
-            question: 'Is 1+1=2?',
-            correctAnswer: 'yes',
-        },
-        {
-            question: 'Is 2+2=5?',
-            correctAnswer: 'no'
+    var questions = [];
+    $scope.quizName = $routeParams.name;
+    $scope.currentQuestionIndex = 0;
 
-        },
-        {
-            question: 'Is 2+6=8?',
-            correctAnswer: 'yes'
+    Questions.get($routeParams.name).then(function(resp) {
+    	resetCounter();
+    	questions = resp.data;
+    })
 
-        }
-    ]
+    $scope.$watch('currentQuestionIndex', function(newVal) {
+    	if (questions.length > 0) {
+    		$scope.currentQuestion = questions[$scope.currentQuestionIndex];
+    		
+    		// If last question
+    		if ($scope.currentQuestionIndex == questions.length) {
+    			finish();
+    		}
+    	}
+
+    });
 
     var resetCounter = function() {
 	    $scope.currentTime = settings.secondsPerQuestion * 10;
@@ -38,11 +42,11 @@ angular.module('newsquizApp')
         if ($scope.currentTime < 0) {
         	resetCounter();
     		questions[$scope.currentQuestionIndex].status = 'unanswered';
+    		$scope.currentQuestionIndex++;
         	$scope.lifesLeft--;
         }
         timer = $timeout($scope.onTimeout,100);
     }
-    resetCounter();
     var timer = $timeout($scope.onTimeout,100);
 
     $scope.lifesLeft = settings.numberOfLifes;
@@ -50,15 +54,7 @@ angular.module('newsquizApp')
     	return  $filter('filter')(questions, {'status': 'correct'}).length;
     };
 
-    $scope.currentQuestionIndex = 0;
-    $scope.$watch('currentQuestionIndex', function(newVal) {
-    	$scope.currentQuestion = questions[$scope.currentQuestionIndex];
-    	
-    	// If last question
-    	if ($scope.currentQuestionIndex == questions.length) {
-    		finish();
-    	}
-    });
+    
     $scope.$watch('lifesLeft', function(newVal) {
     	if (newVal == 0) {
     		finish();

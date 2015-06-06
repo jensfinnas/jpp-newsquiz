@@ -1,0 +1,22 @@
+Current questions: {{ currentQuestionIndex }}
+<div id="lives">
+  {{ lifesLeft }} lifes left!
+</div>
+<div>{{ currentTime }}</div>
+
+<div ng-hide="showResults">
+{{questions}}
+  <img src="quizes/{{ quizName }}/{{ currentQuestion.image }}">
+  <div id="footer">
+    <div ng-click="answer('no')">
+      No
+    </div>
+    <div ng-click="answer('yes')">
+      Yes
+    </div>
+  </div>
+</div>
+<div ng-show="showResults">
+  You got {{ getPoints() }} points!
+</div>
+
