@@ -1,7 +1,7 @@
 [
 	{
 		"image": "1.png",
-		"correctAnswer": true
+		"correctAnswer": false
 	},
 	{
 		"image": "2.png",
@@ -13,7 +13,7 @@
 	},
 	{
 		"image": "4.png",
-		"correctAnswer": true
+		"correctAnswer": false
 	},
 	{
 		"image": "5.png",
@@ -21,6 +21,22 @@
 	},
 	{
 		"image": "6.png",
+		"correctAnswer": false
+	},
+	{
+		"image": "7.png",
 		"correctAnswer": true
+	},
+	{
+		"image": "8.png",
+		"correctAnswer": false
+	},
+	{
+		"image": "9.png",
+		"correctAnswer": true
+	},
+	{
+		"image": "10.png",
+		"correctAnswer": false
 	}
 ]
