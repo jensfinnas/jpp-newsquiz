@@ -1,0 +1,26 @@
+[
+	{
+		"image": "1.png",
+		"correctAnswer": true
+	},
+	{
+		"image": "2.png",
+		"correctAnswer": true
+	},
+	{
+		"image": "3.png",
+		"correctAnswer": true
+	},
+	{
+		"image": "4.png",
+		"correctAnswer": true
+	},
+	{
+		"image": "5.png",
+		"correctAnswer": true
+	},
+	{
+		"image": "6.png",
+		"correctAnswer": true
+	}
+]
