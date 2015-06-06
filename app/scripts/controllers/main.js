@@ -8,16 +8,15 @@
  * Controller of the newsquizApp
  */
 angular.module('newsquizApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $timeout, $filter) {
     var settings = {
-    	secondsPerQuestion: 5,
+    	secondsPerQuestion: 3,
     	numberOfLifes: 3 
     }
     var questions = [
         {
             question: 'Is 1+1=2?',
             correctAnswer: 'yes',
-
         },
         {
             question: 'Is 2+2=5?',
@@ -31,8 +30,25 @@ angular.module('newsquizApp')
         }
     ]
 
+    var resetCounter = function() {
+	    $scope.currentTime = settings.secondsPerQuestion * 10;
+    }
+    $scope.onTimeout = function(){
+        $scope.currentTime--;
+        if ($scope.currentTime < 0) {
+        	resetCounter();
+    		questions[$scope.currentQuestionIndex].status = 'unanswered';
+        	$scope.lifesLeft--;
+        }
+        timer = $timeout($scope.onTimeout,100);
+    }
+    resetCounter();
+    var timer = $timeout($scope.onTimeout,100);
+
     $scope.lifesLeft = settings.numberOfLifes;
-    $scope.points = 0;
+    $scope.getPoints = function() {
+    	return  $filter('filter')(questions, {'status': 'correct'}).length;
+    };
 
     $scope.currentQuestionIndex = 0;
     $scope.$watch('currentQuestionIndex', function(newVal) {
@@ -40,22 +56,32 @@ angular.module('newsquizApp')
     	
     	// If last question
     	if ($scope.currentQuestionIndex == questions.length) {
-    		$scope.showResults = true;
+    		finish();
+    	}
+    });
+    $scope.$watch('lifesLeft', function(newVal) {
+    	if (newVal == 0) {
+    		finish();
     	}
     })
-    
     
 
     $scope.answer = function(answer) {
     	// Correct answer
     	if (answer == $scope.currentQuestion.correctAnswer) {
-    		$scope.points = $scope.points + 1;
+    		questions[$scope.currentQuestionIndex].status = 'correct';
     	}
     	// Wrong answer
     	else {
-    		$scope.lifesLeft = $scope.lifesLeft - 1;
+    		questions[$scope.currentQuestionIndex].status = 'false';
     	}
     	$scope.currentQuestionIndex = $scope.currentQuestionIndex + 1;
+    	resetCounter();
+    }
+
+    var finish = function() {
+    	$scope.showResults = true;
+    	$timeout.cancel(timer);
     }
 
   });
