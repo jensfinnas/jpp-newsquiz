@@ -10,7 +10,7 @@
 angular.module('newsquizApp')
   .controller('QuizCtrl', function ($scope, $routeParams,$timeout, $filter, Questions) {
     var settings = {
-    	secondsPerQuestion: 3,
+    	secondsPerQuestion: 8,
     	numberOfLifes: 3 
     }
     var questions = [];
