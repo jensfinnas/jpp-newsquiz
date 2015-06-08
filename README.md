@@ -1,7 +1,8 @@
-# newsquiz
+# Reinventing the news quiz
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+This is an experiment with gameification of news quizzes using timing and life counts.
+
+It is a result of a mini hackathon at the J++ Stockholm Summit 2015.
 
 ## Build & development
 
